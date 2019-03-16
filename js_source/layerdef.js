@@ -78,6 +78,11 @@
 make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, false),
 make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, false),
 make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, false),
+
+			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, false),
+make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, false),
+make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, false),
+make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
 			  
