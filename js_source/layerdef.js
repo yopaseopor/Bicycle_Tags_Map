@@ -83,6 +83,8 @@ make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nb
 make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, false),
 make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, false),
 make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
+
+make_layer(QURL + "?data=node[obstacle:wheelchair=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
 			  
