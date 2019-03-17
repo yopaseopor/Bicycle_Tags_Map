@@ -13,7 +13,7 @@
 //=====================
 	function layerdef(type){
 		
-		if (type == "test"){
+		if (type == "btm"){
 		//	dit maakt de layers voor de surfacelaag	
 			map.addLayers([
 			
