@@ -89,7 +89,7 @@ make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000
 		
 		
 	
-		if (type == "cyc"){
+		if (type == "cycleways"){
 		//	dit maakt de layers voor de cycleway tags
 			map.addLayers([
 			//highway=cycleway
