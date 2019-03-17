@@ -85,6 +85,14 @@ make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff"
 make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
 
 make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
+
+			make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, false),
+make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ff3300", name="#c#&nbspwcrossing=unmarked", 3, false),
+make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, false),
+
+make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
+
+
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
 			  
