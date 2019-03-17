@@ -70,7 +70,7 @@
 		}
 
 
-		if (type == "btm"){
+		if (type == "test"){
 		//	dit maakt de layers voor de surfacelaag	
 			map.addLayers([
 			
