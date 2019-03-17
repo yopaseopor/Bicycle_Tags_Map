@@ -277,7 +277,7 @@ function popuplinks(lonlat){
 	  thelink = thelink + "<b>A PIE DE CALLE</b><br><a href=\"https://www.mapillary.com/app/?lat="  + (lonlat.lat) + "&lng=" + (lonlat.lon ) + "&z=15"  + "\" target=\"_blank\"><img src='img/mapillary.png'>Mapillary</a>";
 	  thelink = thelink + "<a href=\"https://openstreetcam.org/map/@"  + (lonlat.lat) + "," + (lonlat.lon ) + "17z"  + "\" target=\"_blank\"><img src='img/openstreetcam.png'>OpenStreetCam</a><hr>";
 	  thelink = thelink + "<b>RECORRIDOS</b><br><a href=\"http://cycling.waymarkedtrails.org/nl/?zoom=13" +  "&lat=" + lonlat.lat + "&lon=" + lonlat.lon + "\" target=\"_blank\"><img src='img/lonvia.gif'>Waymarked trails</a><hr>";
-	  thelink = thelink + "<a href=\"https://www.wikiloc.com/wikiloc/map.do?lt=" + lonlat.lat + "&ln=" + lonlat.lon + "&z=17" target=\"_blank\"><img src='img/lonvia.gif'>Wikiloc</a><hr>";
+	  
 	
 	  var area = 0.01
 	  var ctop = lonlat.lat + area;
