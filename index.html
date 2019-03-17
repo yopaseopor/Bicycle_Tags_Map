@@ -84,7 +84,7 @@ function init(){
 //			new OpenLayers.Control.MousePosition(), // niet bij BTM
 			plink,
 			new OpenLayers.Control.Attribution()],
-			maxExtent: new OpenLayers.Bounds(313086.067856,5087648.602661,313086.067856,5087648.602661),
+			maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
 			maxResolution: 156543.0399,
 			numZoomLevels: 19,
 			units: 'm',
@@ -167,9 +167,9 @@ function init(){
       <td colspan="6" class="kaartnaam" align='center'>Test tags on OSM <a href='https://wiki.openstreetmap.org/wiki/Bicycle_tags_map' target='_blank'><img src='img/help.gif'></a></td>
     </tr>
     <tr> 
-	<td id="btm" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">test tags</td>
       <td id="cycleways" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">btm tags</td>
-            <td id="route" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">route tags</td>
+      <td id="btm" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">test tags</td>
+      <td id="route" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">route tags</td>
 	  <td id="bugs" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">bugs in tags</td>
       <td id="clearall" class="action" style="border-right:1px solid #000000;" onclick="tabtype.clearall();">clear layers</td>	  
 <!-- tab voor gps positie, is leuk kan ook weg natuurlijk -->
