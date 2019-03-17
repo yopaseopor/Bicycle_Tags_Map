@@ -48,11 +48,11 @@ var browser = "";
 // standaard positie/zoom		
       var lat = 52.15;
       var lon = 5.38;
-      var zoom = 7;
+      var zoom = 8;
 	  
 	var map;
 	var tabtype = {
-		name: "cycleways",
+		name: "test",
 			clearall: function (){ //functie voor toekomstig gebruik
 				for (i = map.layers.length - 1; i > 1; i--) { 
 					if (map.layers[i].isBaseLayer == false) { // only to overlays
@@ -168,7 +168,7 @@ function init(){
     </tr>
     <tr> 
       <td id="cycleways" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">btm tags</td>
-      <td id="btm" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">test tags</td>
+      <td id="test" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">test tags</td>
       <td id="route" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">route tags</td>
 	  <td id="bugs" class="dorment" style="border-right:1px solid #000000;" onclick="switchtab(this.id,tabtype.name);">bugs in tags</td>
       <td id="clearall" class="action" style="border-right:1px solid #000000;" onclick="tabtype.clearall();">clear layers</td>	  
