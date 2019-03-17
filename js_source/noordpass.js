@@ -56,7 +56,7 @@
 					// strip de wegentag
 					t = text.search("</h2>") + 5;
 					if (t<5){ // geen wegen gevonden
-					text = "<br><font color=\"red\"> <b>no ways found</b><br>";
+					text = "<br><font color=\"red\"> <b>No se encuentran vías</b><br>";
 					}
 					else{
 					text = text.slice(t, t_end);
@@ -129,7 +129,7 @@
 		var mapBounds = this.getMapBounds();
 		if (this.layer && this.layer.map && this.layer.map.getZoom() < this.zoom_data_limit) {
 			if (this.layer.visibility == true) {
-				setStatusText(" Please zoom in to view data! ");
+				setStatusText(" Ácercate más para ver los datos. ");
 				zoom_valid = false;
 				this.bounds = null;
 			}
@@ -408,6 +408,6 @@ plink.updateLink();
 		};
 			
 	function noPos(ercode) {
-		alert("Unable to get location");
+		alert("No se ha podido determinar tu posición");
 		//map.setCenter(new window.OpenLayers.LonLat(lon,lat).transform(map.displayProjection,map.projection), zoom);
 		};
