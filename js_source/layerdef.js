@@ -11,6 +11,22 @@
 // transparantie = 0-1 transparantie van de lijn
 //
 //=====================
+// ====================
+//	
+//	COPIAR	if (type == "nameofthe td id"){                         nombre de la id de la td | nom de la id de la td a index.html  
+//  COPIAR	map.addLayers([
+//	COPIAR  make_layer(QURL + "?data=(way[key=value](bbox);node(w);way[otherkey=othervalue](bbox);node(w););out+skel;", "#colorinRGB",name="#typeofline#nameyouwillseeattheslector",circleradius, false,"@transparency"),
+//			]);
+//			
+//		}
+// 
+//<URL> string 'url query',<color>: string '#RGB', <name>: string '[imagetype]text', <lijnbreedte>[.cirkelradius]: int/float, <zichtbaarheid> : boolean, [lijntpye][transparantie] :string '[aan uit (aan uit ( ...))][@transparantie]'
+//
+// imagetype: #l# = lijn, #dl#=dubbele lijn, #d# = stippellijn, #c#= transparant, #co# = cirkel opaque met cijfers
+// aan/uit = pixellengte van de lijn, zichtbare lijn-open gedeelte
+// transparantie = 0-1 transparantie van de lijn
+//
+//=====================
 	function layerdef(type){
 	
 		if (type == "cycleways"){
@@ -74,22 +90,22 @@
 		//	dit maakt de layers voor de surfacelaag	
 			map.addLayers([
 			
-			make_layer(QURL + "?data=node[kerb=lowered](bbox);out+skel;", "#66ff66", name="#c#&nbspkerb=lowered", 3, false),
-make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, false),
-make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, false),
-make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, false),
+			make_layer(QURL + "?data=node[kerb=lowered](bbox);out+skel;", "#66ff66", name="#c#&nbspkerb=lowered", 3, true),
+make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, true),
+make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, true),
+make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, true),
 
-			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, false),
-make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, false),
-make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, false),
-make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
+			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, true),
+make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, true),
+make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, true),
+make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, true),
 
-make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
+make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, true),
 
-make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, false),
-make_layer(QURL + "?data=node[crossing=no](bbox);out+skel;", "#ff3300", name="#c#&nbspcrossing=no", 3, false),
-make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, false),
-make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", name="#c#&nbspcrossing=unmarked<hr>", 3, false),
+make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, true),
+make_layer(QURL + "?data=node[crossing=no](bbox);out+skel;", "#ff3300", name="#c#&nbspcrossing=no", 3, true),
+make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, true),
+make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", name="#c#&nbspcrossing=unmarked<hr>", 3, true),
 
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
