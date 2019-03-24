@@ -17,7 +17,7 @@ OpenLayers.Control.LocalTracks=OpenLayers.Class(OpenLayers.Control,{
 	displayClass: 'olControlLocalTracks',
 
 	fileSizeLimit: (1<<20),	// 1Mb
-
+//MODIFICAR Interficie
 	textButtonLabel: 'Cargar GPX',
 	textButtonTitle: 'Cargar archivo GPX',
 	textFileSizeWarning: 'The file "${name}" is ${size} Bytes big' +
