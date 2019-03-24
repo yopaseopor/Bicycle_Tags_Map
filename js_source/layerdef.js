@@ -338,7 +338,11 @@ function layerdef(type){
 			map.addLayers([
 			
 			//highway=cycleway
-			make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", name="#l#highway=cycleway<hr>Route relations:", 3, pointparams,false),
+			make_layer(
+				QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;",
+				name="#l#highway=cycleway<hr>Route relations:",
+				defaultSolidLine("red"),
+				false),
 /*
 			//LF-routes
 			make_layer(QURL + "?data=(relation[route=bicycle][network=ncn](bbox);way(r)(bbox);node(w););out+skel;", "blue",name="#l#NCN route <i>(LF route)</i>", 12, false,"@0.6"),
