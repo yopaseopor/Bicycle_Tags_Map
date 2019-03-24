@@ -152,13 +152,10 @@
 	}
 	);
 	// ------------------------- originele layer -----------------------------------------------------------------------
-	function make_large_layer(data_url, color, name, zoom, size, visible, dash, opacity, radius, radopacity) {
-	var styleMap =  new OpenLayers.StyleMap( {
-		strokeColor : color, strokeOpacity : opacity, strokeWidth : size, strokeLinecap : "square", strokeDashstyle : dash, pointRadius : radius, fillColor : "white", fillOpacity : radopacity
-	}
-	);
+	function make_large_layer(data_url, name, zoom, styleParams, visible) {
+	var styleMap = new OpenLayers.StyleMap(styleParams);
 	var layer =  new OpenLayers.Layer.Vector(name, {
-		strategies : [new ZoomLimitedBBOXStrategy(13)], protocol :  new OpenLayers.Protocol.HTTP( {
+		strategies : [new ZoomLimitedBBOXStrategy(zoom)], protocol :  new OpenLayers.Protocol.HTTP( {
 			url : data_url, format :  new OpenLayers.Format.OSM( {
 				'checkTags' : true
 			}
@@ -171,38 +168,16 @@
 	return layer;
 	}
 	
-	function make_layer(data_url, color, name, size, visible, dash) {
-	// ----- opacity catch in dash, if dash = "4 3@1.0" 1.0 is used as opacity
-	if (dash != undefined) {
-		dashalfa = dash.split("@");
-		dash = dashalfa[0];
-		if (dashalfa[1] == undefined) {
-			opacity = 0.75;
-		}
-		else {
-			opacity = parseFloat(dashalfa[1]);
-		}
-	}
-	else {
-		dash = "solid";
-		opacity = 0.75;
-	}
-	//calculate seperate radius if given	
-	var radius = (size - Math.floor(size)) * 10;
-	if (radius <= 0) {
-		radius = size;
-		radopacity = 0.0;
-	}
-	else {
-		radopacity = opacity;
-	}
-	//---- add an image if specified by  placehoder in name, placeholders are #l# > single line, #dl#>line line,#d#>dotted 
+	function make_layer(data_url, name, styleParams, visible, dash) {
+	
+	//---- add an image if specified by  placehoder in name, placeholders are #l# > single line, #dl#>line line,#d#>dotted,#ex# for external image
 	//	alert(name);
-	name = name.replace("#l#", "<img style='vertical-align: middle;background-color: " + color + ";' src='img/line.gif'>&nbsp");
-	name = name.replace("#dl#", "<img style='vertical-align: middle;background-color: " + color + ";' src='img/lineline.gif'>&nbsp");
-	name = name.replace("#d#", "<img style='vertical-align: middle;background-color: " + color + ";' src='img/dots.gif'>&nbsp");
-	name = name.replace("#c#", "<img style='vertical-align: middle;background-color: " + color + ";' src='img/tcircle.gif'>&nbsp");
-	return make_large_layer(data_url, color, name, 13, size, visible, dash, opacity, radius, radopacity);
+	name = name.replace("#l#", "<img style='vertical-align: middle;background-color: " + styleParams.strokeColor + ";' src='img/line.gif'>&nbsp");
+	name = name.replace("#dl#", "<img style='vertical-align: middle;background-color: " + styleParams.strokeColor + ";' src='img/lineline.gif'>&nbsp");
+	name = name.replace("#d#", "<img style='vertical-align: middle;background-color: " + styleParams.strokeColor + ";' src='img/dots.gif'>&nbsp");
+	name = name.replace("#c#", "<img style='vertical-align: middle;background-color: " + styleParams.strokeColor + ";' src='img/tcircle.gif'>&nbsp");
+	name = name.replace("#ex#", "<img style='width:20px;vertical-align: middle; ' src='"+encodeURI(styleParams.externalGraphic)+"'>&nbsp");
+	return make_large_layer(data_url, name, 13, styleParams, visible);
 	}
 	
 //--- dit blok is nieuw -----------------------------
