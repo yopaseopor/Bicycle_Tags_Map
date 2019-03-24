@@ -56,21 +56,69 @@
 // INSTRUCCIONS transparència = @0-1 transparència de la línia
 //
 //=====================
-	function layerdef(type){
-	
-		if (type == "cycleways"){
+function layerdef(type){
+
+	/*
+	 * {
+	 * 	strokeColor: "red",
+	 * 	strokeOpacity: 0.9,
+	 * 	strokeWidth: 5,
+	 * 	strokeLinecap: "square",
+	 * 	strokeDashstyle: "1 0"
+	 */
+	function defaultSolidLine(color){
+		return(
+		{
+			strokeColor:color,
+			strokeOpacity:0.7,
+			strokeWidth:2,
+			strokeLinecap: "square",
+		});
+	}
+
+	function defaultDashedLine(color){
+		return(
+		{
+			strokeColor:color,
+			strokeOpacity:0.7,
+			strokeWidth:2,
+			strokeLinecap: "square",
+			strokeDashstyle: "6 10"
+		});
+	}
+
+	if (type == "cycleways"){
 		//	dit maakt de layers voor de cycleway tags
-			map.addLayers([
-			//highway=cycleway
-			make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway~'path$|^footway$'][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 3, false,"@1.0"),
-			  
+		map.addLayers([
+		//highway=cycleway
+			make_layer(
+				QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway~'path$|^footway$'][bicycle=designated](bbox);node(w););out+skel;",
+				name="#l#highway=cycleway",
+				defaultSolidLine("red"),
+				false,
+			),
 			//Bromfiets/Fietpaden/Onverpl.fietspaden
-            make_layer(QURL + "?data=(way[highway=cycleway][moped~'^designated$|^yes$'](bbox);node(w);way[highway=cycleway]['moped:forward'~'^designated$|^yes$'](bbox);node(w);way[highway=cycleway]['moped:backward'~'^designated$|^yes$'](bbox);node(w););out+skel;", "#7b006a",name="#l#cycleway, moped=yes", 4, false),
+            make_layer(
+				QURL + "?data=(way[highway=cycleway][moped~'^designated$|^yes$'](bbox);node(w);way[highway=cycleway]['moped:forward'~'^designated$|^yes$'](bbox);node(w);way[highway=cycleway]['moped:backward'~'^designated$|^yes$'](bbox);node(w););out+skel;",
+				name="#l#cycleway, moped=yes",
+				defaultSolidLine("purple"),
+				false
+			),
 			  
-            make_layer(QURL + "?data=(way[highway=cycleway][moped=no](bbox);node(w););out+skel;", "#00FFFF",name="#dl#cycleway moped=no", 3, false,"6 10"),
+            make_layer(
+				QURL + "?data=(way[highway=cycleway][moped=no](bbox);node(w););out+skel;",
+				name="#dl#cycleway moped=no",
+				defaultDashedLine("cyan"),
+				false
+			),
 			
-            make_layer(QURL + "?data=(way[highway=cycleway][mofa=no](bbox);node(w););out+skel;", "#00FFFF",name="#l#cycleway mofa=no", 3, false),
+            make_layer(
+				QURL + "?data=(way[highway=cycleway][mofa=no](bbox);node(w););out+skel;", 
+				name="#l#cycleway mofa=no",
+				defaultSolidLine("cyan"),
+				false),
 			
+/*			  
 			// kenmerken met cycleway
 			  
 			make_layer(QURL + "?data=(way[cycleway=cyclestreet](bbox);node(w);way[bicycle_road=yes](bbox);node(w);way[cyclestreet=yes](bbox);node(w););out+skel;","#ff65d5",name="#l#cyclestreet", 8, false),
@@ -109,33 +157,133 @@
             make_layer(QURL + "?data=(way[bicycle=use_sidepath](bbox);node(w););out+skel;","#bd65d5",name="#dl#bicycle=use_sidepath", 4, false,"6 10"),
 			
 			make_layer(QURL + "?data=(way[bicycle=no](bbox);node(w););out+skel;","black",name="#dl#bicycle=no", 4, false,"6 10")
+*/
+		]);
+	}
 
-			]);
-			
-		}
+	/*
+	 * base Point Parameters:
+	 * {
+	 * 	strokeColor:"#FFFFFF",
+	 * 	strokeOpacity:0.9,
+	 * 	strokeWidth:3,
+	 * 	pointRadius:3
+	 * 	fillColor: "white",
+	 * 	fillOpacity: 0.75,
+	 * }
+	 */
+	function defaultPoint(color){
+		return (
+		{
+			strokeColor:color,
+			strokeOpacity:0.9,
+			strokeWidth:3,
+			pointRadius:5,
+			fillColor:"white",
+			fillOpacity:0.75
+		});
+	}
 
-
-		if (type == "test"){
-		//	dit maakt de layers voor de surfacelaag	
-			map.addLayers([
-			
+	/*
+	 * external Point Parameters:
+	 * {
+	 * 	externalGraphic: "path/to/icon.png",
+	 * 	graphicWidth: 6,
+	 * 	graphicHeight:6,
+	 * 	graphicOpacity: 0.75,
+	 * 	graphicXOffset: 0,
+	 * 	graphicYOffset: 0,
+	 * 	rotation: 0
+	 * }
+	 */
+	function defaultExtPoint(url){
+		return (
+		{
+			externalGraphic:url,
+			graphicWidth:16,
+			graphicHeight:16
+		});
+	}
+	
+	if (type == "test"){
+		
+		map.addLayers([
+/*			
 			make_layer(QURL + "?data=node[kerb=lowered](bbox);out+skel;", "#66ff66", name="#c#&nbspkerb=lowered", 3, false),
-make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, false),
-make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, false),
-make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, false),
+			make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, false),
+			make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, false),
+			make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, false),
+*/
+			make_layer(
+				QURL + "?data=node[wheelchair=yes](bbox);out+skel;",
+				name="#ex#&nbspwheelchair=yes",
+				defaultExtPoint("https://image.flaticon.com/icons/png/512/9/9285.png"),
+				false
+			),
 
-			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, false),
-make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, false),
-make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, false),
-make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
+			make_layer(
+				QURL + "?data=node[wheelchair=no](bbox);out+skel;",
+				name="#c#&nbspwheelchair=no",
+				defaultPoint("red"),
+				false
+			),
 
-make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
+			make_layer(
+				QURL + "?data=node[wheelchair=designated](bbox);out+skel;",
+				name="#c#&nbspwheelchair=designated",
+				defaultPoint("blue"),
+				false
+			),
 
-make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, false),
-make_layer(QURL + "?data=node[crossing=no](bbox);out+skel;", "#ff3300", name="#c#&nbspcrossing=no", 3, false),
-make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, false),
-make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", name="#c#&nbspcrossing=unmarked<hr>", 3, false),
+			make_layer(
+				QURL + "?data=node[wheelchair=limited](bbox);out+skel;",
+				name="#c#&nbspwheelchair=limited<hr>",
+				defaultPoint("yellow"),
+				false
+			),
 
+			make_layer(
+				QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;",
+				name="#c#&nbspobstacle:wheelchair=yes<hr>",
+				defaultPoint("black"),
+				false
+			),
+
+			make_layer(
+				QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;",
+				name="#ex#&nbspcrossing=traffic_signals",
+				defaultExtPoint("http://icons.iconarchive.com/icons/google/noto-emoji-travel-places/1024/42571-vertical-traffic-light-icon.png"),
+				false
+			),
+
+			make_layer(
+				QURL + "?data=node[crossing=no](bbox);out+skel;",
+				name="#c#&nbspcrossing=no",
+				defaultPoint("red"),
+				false
+			),
+
+			make_layer(
+				QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;",
+				name="#ex#&nbspcrossing=uncontrolled",
+				defaultExtPoint("https://d30y9cdsu7xlg0.cloudfront.net/png/35167-200.png"),
+				false
+			),
+
+			make_layer(
+				QURL + "?data=node[crossing=unmarked](bbox);out+skel;",
+				name="#c#&nbspcrossing=unmarked<hr>",
+				{
+					strokeColor:"grey",
+					strokeOpacity:0.9,
+					strokeWidth:2,
+					pointRadius:4,
+					fillColor:"blue",
+					fillOpacity:0.75
+				},
+				false
+			),
+/*
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
 			  
@@ -182,7 +330,7 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
 			 
 			 make_layer(QURL + "?data=(way[smoothness~'^very_bad|^horrible|^very_horrible|^impassable'](bbox);node(w););out+skel;","#00FFFF", 
 			 name="#l#smoothness very bad", 4, false)
-			 
+*/			 
 			]);
 	}			
 		if (type == "route"){
@@ -190,8 +338,12 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
 			map.addLayers([
 			
 			//highway=cycleway
-			make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway<hr>Route relations:", 3, false),
-
+			make_layer(
+				QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;",
+				name="#l#highway=cycleway<hr>Route relations:",
+				defaultSolidLine("red"),
+				false),
+/*
 			//LF-routes
 			make_layer(QURL + "?data=(relation[route=bicycle][network=ncn](bbox);way(r)(bbox);node(w););out+skel;", "blue",name="#l#NCN route <i>(LF route)</i>", 12, false,"@0.6"),
 
@@ -222,7 +374,7 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
  			// cyclable ways
 			make_layer(QURL + "?data=(way[highway][highway!~'^motorway|^trunk|^foot|^path|^pedes|^platform|^steps|^bridleway|^prop|^constr'][access!~'^no|^priv'][bicycle!=no][horse!=designated][tracktype!~'grade4|grade5'](bbox);node(w);way[highway][access~'^no|^priv'][bicycle~'^yes|^desig|^offic|^destin|^permis'](bbox);node(w);way[highway~'^foot|^path|^pedes|^platform|^steps|^bridleway|^prop|^constr|^trunk|^motor'][bicycle~'^yes|^desig|^offic|^destin|^permis'](bbox);node(w);way[highway~'^foot|^path|^pedes|^platform|^steps|^bridleway|^prop|^constr'][mtb~'^yes|^desig|^offic|^destin|^permis'](bbox);node(w);way[highway=steps]['ramp:bicycle'=yes](bbox);node(w);way[route=ferry][bicycle!=no](bbox);node(w););out+skel;", "#39ff00",name="<img style='vertical-align: middle;background-color:#39ff00;' src='img/line.gif'> 'cycleable' ways<hr>", 4, false,"@0.6")
 			
-
+*/
 			]);
 	
 			// OfficiÃ«le LF routes van het Fietsplatform
@@ -282,7 +434,7 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
 	if (type == "bugs"){
 		//	dit maakt de layers voor de bugslaag
 			map.addLayers([
-			
+		/*	
 			make_layer(QURL + "?data=(relation[route=bicycle](bbox);way[bicycle~'no|use_sidepath'](r);node(w););out+skel;", "#39ff00",name="#l#cycle routes & bicycle=no|use_sidepath",8, true,"5 10"),
 	
 			make_layer(QURL + "?data=(way[highway=cycleway][bicycle=no][moped!~'^yes|^designated'](bbox);node(w););out+skel;", "#ff00d5",name="#l#cycleway/bicycle=no<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNote: temporarily blocked ways?",10, true),
@@ -303,7 +455,7 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
 			make_layer(QURL + "?data=(way[highway=cycleway][bicycle~'yes|designated'](bbox);node(w););out+skel;", "blue",name="#l#cycleway &<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbicycle=yes/designated<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(needless tagging?)", 3, false,"5 10"),
 			
 			make_layer(QURL + "?data=(way[name~'^Fietspad|^fietspad|^pad$|^Pad$|cycleway|^path$|^Path$'](bbox);node(w);way[highway=cycleway][name!~'.'](bbox);node(w););out+skel;", "#ffff00",name="#l#cycleway/path without<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspstreetname (address search)",4, false),
-
+*/
 			]);
 	}
 	
