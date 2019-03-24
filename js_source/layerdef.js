@@ -13,18 +13,47 @@
 //=====================
 // ====================
 //	
-//	COPIAR	if (type == "nameofthe td id"){                         nombre de la id de la td | nom de la id de la td a index.html  
+//	COPIAR	if (type == "nameofthe td id"){                         of index.html
 //  COPIAR	map.addLayers([
-//	COPIAR  make_layer(QURL + "?data=(way[key=value](bbox);node(w);way[otherkey=othervalue](bbox);node(w););out+skel;", "#colorinRGB",name="#typeofline#nameyouwillseeattheslector",circleradius, false,"@transparency"),
-//			]);
-//			
-//		}
-// 
-//<URL> string 'url query',<color>: string '#RGB', <name>: string '[imagetype]text', <lijnbreedte>[.cirkelradius]: int/float, <zichtbaarheid> : boolean, [lijntpye][transparantie] :string '[aan uit (aan uit ( ...))][@transparantie]'
+//	COPIAR  make_layer(QURL + "?data=(way[key=value](bbox);node(w);way[otherkey=othervalue](bbox);node(w););out+skel;", "#colorinRGB",name="#typeofline#nameyouwillseeattheslector",circleradius/width of the line,default active (boolean value),"start end of the line@transparency"),
+// COPIAR			]);
+// COPIAR			
+// COPIAR		}
+// INSTRUCCIONS #colorinRGB: RGB color for the line/cercle
+// INSTRUCCIONS #typeofline#: #l# = line, #dl#=double line, #d# = uncontinuous line, #c#= transparent, #co# = cercle opaque
+// INSTRUCCIONS start/end of the line pixels in which start the line
+// INSTRUCCIONS default active option true enabled false unabled
+// INSTRUCCIONS transparency = @0-1 transparency of the line
 //
-// imagetype: #l# = lijn, #dl#=dubbele lijn, #d# = stippellijn, #c#= transparant, #co# = cirkel opaque met cijfers
-// aan/uit = pixellengte van de lijn, zichtbare lijn-open gedeelte
-// transparantie = 0-1 transparantie van de lijn
+//=====================
+// ====================
+//	
+//	COPIAR	if (type == "nombredelaidtd"){                         nombre de la id de la td  de index.html
+//  COPIAR	map.addLayers([
+//	COPIAR  make_layer(QURL + "?data=(nodovíaorelación[clave=valor](bbox);node(w);otronodovíaorelación[otraclave=otrovalor](bbox);node(w););out+skel;", "#colorenRGB",name="#tipodelínea#elnombrequedeseesparaelselector",radiodelcírculo/anchuradelínea,selectoractivooinactivopordefecto (valor booleano),"inicio final de la línea@transparencia"),
+// COPIAR			]);
+// COPIAR			
+// COPIAR		}
+// INSTRUCCIONS #colorenRGB: código RGB del color para la línea/círculo
+// INSTRUCCIONS #tipodelínea#: #l# = línea, #dl#=línea doble, #d# = discontinua, #c#= transparente, #co# = círculo opaco
+// INSTRUCCIONS inicio/fin de la discontinuidad de la línea
+// INSTRUCCIONS selector activado por defecto: true activado false desactivado
+// INSTRUCCIONS transparencia = @0-1 transparencia de la línea
+//
+//=====================
+// ====================
+//	
+//	COPIAR	if (type == "nombredelaidtd"){                         nom de la id de la td  d'index.html
+//  COPIAR	map.addLayers([
+//	COPIAR  make_layer(QURL + "?data=(nodeviaorelació[clau=valor](bbox);node(w);altreviaonodeorelació[altraclau=altrevalor](bbox);node(w););out+skel;", "#colorenRGB",name="#tipusdelínia#elnomquedesitgispelselector",radidelcercle/ampladadelínia,selectoractiuperdefecte (valor booleà),"inici final de la línia@transpareècia"),
+// COPIAR			]);
+// COPIAR			
+// COPIAR		}
+// INSTRUCCIONS #colorenRGB: codi RGB del color per a la línia/cercle
+// INSTRUCCIONS #tipusdelínia#: #l# = línia, #dl#=línia doble, #d# = discontínua, #c#= transparent, #co# = cercle opac
+// INSTRUCCIONS inici/fi de la discontinuitat de la línia
+// INSTRUCCIONS selector activat per defecte: true activat false desactivat
+// INSTRUCCIONS transparència = @0-1 transparència de la línia
 //
 //=====================
 	function layerdef(type){
@@ -90,22 +119,22 @@
 		//	dit maakt de layers voor de surfacelaag	
 			map.addLayers([
 			
-			make_layer(QURL + "?data=node[kerb=lowered](bbox);out+skel;", "#66ff66", name="#c#&nbspkerb=lowered", 3, true),
-make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, true),
-make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, true),
-make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, true),
+			make_layer(QURL + "?data=node[kerb=lowered](bbox);out+skel;", "#66ff66", name="#c#&nbspkerb=lowered", 3, false),
+make_layer(QURL + "?data=node[kerb=raised](bbox);out+skel;", "#ff3300", name="#c#&nbspkerb=raised", 3, false),
+make_layer(QURL + "?data=node[kerb=flush](bbox);out+skel;", "#0066ff", name="#c#&nbspkerb=flush", 3, false),
+make_layer(QURL + "?data=node[kerb=no](bbox);out+skel;", "#ffff00", name="#c#&nbspkerb=no<hr>", 3, false),
 
-			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, true),
-make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, true),
-make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, true),
-make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, true),
+			make_layer(QURL + "?data=node[wheelchair=yes](bbox);out+skel;", "#66ff66", name="#c#&nbspwheelchair=yes", 3, false),
+make_layer(QURL + "?data=node[wheelchair=no](bbox);out+skel;", "#ff3300", name="#c#&nbspwheelchair=no", 3, false),
+make_layer(QURL + "?data=node[wheelchair=designated](bbox);out+skel;", "#0066ff", name="#c#&nbspwheelchair=designated", 3, false),
+make_layer(QURL + "?data=node[wheelchair=limited](bbox);out+skel;", "#ffff00", name="#c#&nbspwheelchair=limited<hr>", 3, false),
 
-make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, true),
+make_layer(QURL + "?data=node['obstacle:wheelchair'=yes](bbox);out+skel;", "#000000", name="#c#&nbspobstacle:wheelchair=yes<hr>", 3, false),
 
-make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, true),
-make_layer(QURL + "?data=node[crossing=no](bbox);out+skel;", "#ff3300", name="#c#&nbspcrossing=no", 3, true),
-make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, true),
-make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", name="#c#&nbspcrossing=unmarked<hr>", 3, true),
+make_layer(QURL + "?data=node[crossing=traffic_signals](bbox);out+skel;", "#66ff66", name="#c#&nbspcrossing=traffic_signals", 3, false),
+make_layer(QURL + "?data=node[crossing=no](bbox);out+skel;", "#ff3300", name="#c#&nbspcrossing=no", 3, false),
+make_layer(QURL + "?data=node[crossing=uncontrolled](bbox);out+skel;", "#0066ff", name="#c#&nbspcrossing=uncontrolled", 3, false),
+make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", name="#c#&nbspcrossing=unmarked<hr>", 3, false),
 
 	  		//highways
             make_layer(QURL + "?data=(way[highway=cycleway](bbox);node(w);way[highway=path][bicycle=designated](bbox);node(w););out+skel;", "red",name="#l#highway=cycleway", 5, false),
@@ -286,6 +315,12 @@ make_layer(QURL + "?data=node[crossing=unmarked](bbox);out+skel;", "#ffff00", na
 function popuplinks(lonlat){
 
 	  var thelink = "<div STYLE=\"margin:0px 0px 0px 0px;font-size: 8pt;\"><b>MAPA</b><br><a href=\"http://www.openstreetmap.org?lat=" + lonlat.lat + "&lon=" + lonlat.lon + "&zoom=17\" target=\"_blank\"><img src='img/osm.gif'>OSM</a>&nbsp&nbsp"
+	  //COPIAR You can configure all services give you longitud and latitude and specific zoom in URL
+	  //COPIAR thelink = thelink + "<a href=\"url" + lonlat.lat + "," + lonlat.lon + "zoomcode" target=\"_blank\"><img src='url icon'>Name of the service</a>&nbsp&nbsp";
+	  //COPIAR Puedes configurar todo aquel servicio que te dé longitud (lonlat.lon) y latitud (lonla.lat) y un zoom concreto en la URL
+	  //COPIAR thelink = thelink + "<a href=\"url" + lonlat.lat + "," + lonlat.lon + "codigozoom" target=\"_blank\"><img src='url icono'>Nombre del servicio</a>&nbsp&nbsp";
+	  //COPIAR Pots configurar tots aquells serveis que et donin longitud i latitud i un zoom concre a l'adreça URL
+	  //COPIAR thelink = thelink + "<a href=\"url" + lonlat.lat + "," + lonlat.lon + "codizoom" target=\"_blank\"><img src='url icona'>Nom del servei</a>&nbsp&nbsp";
 	  thelink = thelink + "<a href=\"https://maps.google.es/maps?ll=" + lonlat.lat + "," + lonlat.lon + "&t=h&z=17\" target=\"_blank\"><img src='img/google.gif'>Google</a>&nbsp&nbsp";
 	  thelink = thelink + "<a href=\"http://www.bing.com/maps/?v=2&cp=" + lonlat.lat + "~" + lonlat.lon + "&lvl=17&dir=0&sty=h&form=LMLTCC\" target=\"_blank\"><img src='img/bing.gif'>Bing</a><p>";
 	  thelink = thelink + "<a href=\"https://wego.here.com/?map="  + (lonlat.lat) + "," + (lonlat.lon ) + "17,normal"  + "\" target=\"_blank\"><img src='img/here.png'>Here</a><hr>";
